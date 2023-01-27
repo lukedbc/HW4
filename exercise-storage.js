@@ -29,11 +29,5 @@ ExerciseStorage.prototype.findMostBurned = function() {
 }
 
 ExerciseStorage.prototype.getAll = function() {
-    let result = [];
-
-    this.m_data.forEach(function(exercise) {
-        result.push(exercise.toBeautyString());
-    });
-
-    return result;
+    return this.m_data;
 }

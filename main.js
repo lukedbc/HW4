@@ -24,7 +24,9 @@ function handleShowAllButton() {
     // remove all childs 
     ulElement.innerHTML = "";
 
-    const allDataFromStorage = storage.getAll();
+    const allDataFromStorage = storage.getAll().map(function(exercise) {
+        return exercise.toBeautyString();
+    })
     allDataFromStorage.forEach(function(exerciseAsString, index) {
         let liElement = document.createElement("li");
         liElement.setAttribute("id", "exercise-" + index);
