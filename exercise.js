@@ -53,5 +53,5 @@ Exercise.prototype.toBeautyString = function() {
 }
 
 Exercise.prototype.toShortString = function() {
-    return `${this.m_name} in ${this.m_length} minutes`;
+    return `${this.m_name} in ${this.m_length} minutes - ${this.calculateCaloriesBurned()} calories`;
 }
