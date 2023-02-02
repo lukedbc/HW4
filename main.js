@@ -1,17 +1,27 @@
 const storage = new ExerciseStorage();
 
 function handleAddButton(_) {
-    const radioButtonSelected = getRadioButtonChecked("exercise");
+    try {
 
-    const exerciseNameSelected = getLabelValueFromInput(radioButtonSelected);
-    const minuteValue = getValueFromInputElement("minutes");
+        const radioButtonSelected = getRadioButtonChecked("exercise");
 
-    const exercise = new Exercise({
-        _name: exerciseNameSelected,
-        _length: parseStringToFloat(minuteValue)
-    });
+        const exerciseNameSelected = getLabelValueFromInput(radioButtonSelected);
+        const minuteValue = getValueFromInputElement("minutes");
+        const minuteValueAsFloat = parseStringToFloat(minuteValue);
 
-    storage.add(exercise);
+        if (minuteValueAsFloat <= 0) {
+            throw new Error("Minute must be greater than 0");
+        }
+
+        const exercise = new Exercise({
+            _name: exerciseNameSelected,
+            _length: minuteValueAsFloat,
+        });
+
+        storage.add(exercise);
+    } catch (e) {
+        alert(e.message);
+    }
 }
 
 function handleMostBurnedButton() {
